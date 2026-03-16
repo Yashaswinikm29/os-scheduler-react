@@ -1,0 +1,40 @@
+:root {
+  --bg:      #e8f4f8;
+  --bg2:     #d0e8f0;
+  --bg3:     #f4fafc;
+  --panel:   #ffffff;
+  --border:  #a8cfe0;
+  --border2: #6bafc8;
+  --blue:    #1a6b8a;
+  --blue2:   #2490b5;
+  --blue3:   #3db8e0;
+  --teal:    #0e7c7b;
+  --teal2:   #1aadac;
+  --amber:   #b85c00;
+  --red:     #c0392b;
+  --green:   #1e7e34;
+  --text:    #1a2e3a;
+  --muted:   #5a8aa0;
+  --mono:    'IBM Plex Mono', monospace;
+  --body:    'IBM Plex Sans', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--body);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
+thead tr { background: var(--bg2); }
+thead th {
+  padding: 10px 14px; text-align: left; color: var(--blue);
+  font-weight: 600; font-size: 0.7rem; text-transform: uppercase;
+  letter-spacing: 1px; font-family: var(--mono);
+}
+tbody tr { border-bottom: 1px solid var(--bg2); transition: background 0.15s; }
+tbody tr:hover { background: #f0f8fc; }
+tbody td { padding: 8px 14px; }
