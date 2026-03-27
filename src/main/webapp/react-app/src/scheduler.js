@@ -64,3 +64,31 @@ export function roundRobin(input, quantum) {
   }
   return mk(`Round Robin (Q=${quantum})`, ps, g)
 }
+
+export function srtf(input) {
+  const ps = dc(input)
+  const n = ps.length
+  let t = 0, completed = 0
+  const g = []
+  let lastPid = -1, segStart = 0
+
+  while (completed < n) {
+    const ready = ps.filter(p => p.arrivalTime <= t && p.remainingTime > 0)
+    if (!ready.length) { t++; continue }
+    ready.sort((a, b) => a.remainingTime - b.remainingTime)
+    const p = ready[0]
+
+    if (p.pid !== lastPid) {
+      if (lastPid !== -1) g.push({ pid: lastPid, start: segStart, end: t })
+      segStart = t; lastPid = p.pid
+    }
+
+    p.remainingTime--; t++
+    if (p.remainingTime === 0) {
+      p.completionTime = t; cm(p); completed++
+      g.push({ pid: p.pid, start: segStart, end: t })
+      lastPid = -1
+    }
+  }
+  return mk('SRTF', ps, g)
+}
