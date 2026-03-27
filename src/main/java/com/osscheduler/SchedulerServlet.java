@@ -52,7 +52,7 @@ public class SchedulerServlet extends HttpServlet {
             case "rr":
                 result = Scheduler.roundRobin(processes, quantum);
                 break;
-            case "SRTF":
+            case "srtf":
                 result = Scheduler.srtf(processes);
                 break;
             default:
